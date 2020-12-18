@@ -1,0 +1,19 @@
+{
+  "name": "restaurant-review",
+  "version": "1.0.0",
+  "description": "Restaurant reviews site that uses google maps, google places, search, google street view apis to display restaurants at you location or a searched location",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chepkuruipurity/Restaurant-Review.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chepkuruipurity/Restaurant-Review/issues"
+  },
+  "homepage": "https://github.com/chepkuruipurity/Restaurant-Review#readme"
+}

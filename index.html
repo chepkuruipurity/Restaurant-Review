@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Restaurant Review</title>
+    <meta name="description" content="Restaurant review site" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <header role="banner">
+      <nav>
+        <h1><a href="/">Restaurant Reviews</a></h1>
+      </nav>
+    </header>
+    <main>
+      <div class="searchBox">
+        <input id="search" type="text" placeholder="Search Box" />
+      </div>
+      <div class="mapArea">
+        <div id="map"></div>
+        <div id="restaurantList">
+          <div id="options">
+            <label for="min">Min:</label>
+            <select class="sort" id="min">
+              <option value="0">0 stars</option>
+              <option value="1">1 stars</option>
+              <option value="2">2 stars</option>
+              <option value="3">3 stars</option>
+              <option value="4">4 stars</option>
+              <option value="5">5 stars</option>
+            </select>
+            <label for="min">Max:</label>
+            <select class="sort" id="max">
+              <option value="0">0 stars</option>
+              <option value="1">1 stars</option>
+              <option value="2">2 stars</option>
+              <option value="3">3 stars</option>
+              <option value="4">4 stars</option>
+              <option value="5" selected>5 stars</option>
+            </select>
+          </div>
+          <div id="restaurants"></div>
+          <div
+            id="newRestaurant"
+            class="modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="newRestaurant"
+          >
+            <div class="modal-content">
+              <form id="newRes">
+                <h3 class="modal-title">Add a new restaurant</h3>
+                <label for="restaName">Restaurant Name: </label>
+                <input
+                  type="text"
+                  id="restaName"
+                  name="restaName"
+                  placeholder="Restaurant Name"
+                  required
+                />
+                <p type="text" name="position" id="position"></p>
+                <label for="restaAddress">Address: </label>
+                <input
+                  type="text"
+                  name="restaAddress"
+                  id="restaAddress"
+                  placeholder="Restaurant Address"
+                  required
+                />
+                <label for="rating">Rating: </label>
+                <select name="rating" id="rating" required>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+                <label for="restaPhone">Phone Number: </label>
+                <input
+                  type="text"
+                  name="restaPhone"
+                  id="restaPhone"
+                  placeholder="Restaurant PhoneNumber"
+                />
+                <label for="restaWebsite">Website: </label>
+                <input
+                  type="text"
+                  name="restaWebsite"
+                  id="restaWebsite"
+                  placeholder="Restaurant Website"
+                />
+
+                <div class="restaButton">
+                  <button
+                    id="addRestaurant"
+                    type="submit"
+                    class="addRestaurant"
+                  >
+                    Add Restaurant
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="restaurant-info">
+        <div class="container">
+          <section class="upper">
+            <div class="restaurant">
+              <div id="see-photo"></div>
+              <div class="button-menu"></div>
+              <h2 class="restaurant-name" id="name"></h2>
+              <p id="open"></p>
+              <p class="restaurant-rating" id="resRating">
+                <span class="starRate"></span>
+              </p>
+
+              <p class="restaurant-address" id="address"></p>
+              <p class="restaurant-phone" id="phone"></p>
+              <div id="website"></div>
+            </div>
+            <div id="street-view">
+              <div id="street-view-window">
+                <div id="pano"></div>
+              </div>
+            </div>
+          </section>
+          <section id="reviews-container" aria-label="Reviews">
+            <div id="reviewHeader">
+              <h2 id="title">REVIEWS:</h2>
+
+              <button id="addReviewButton" type="button">Add Review</button>
+            </div>
+
+            <div id="reviews"></div>
+            <div
+              id="reviewModal"
+              class="modal"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="add-review-header"
+              class=""
+            >
+              <div class="modal-content">
+                <h2 class="modal-title">Add Review</h2>
+                <form id="form">
+                  <div class="fieldset">
+                    <label for="add-name"> Name</label>
+                    <input
+                      type="text"
+                      name="add-name"
+                      id="add-name"
+                      placeholder="Your Name"
+                      required
+                    />
+                  </div>
+                  <div class="fieldset">
+                    <label for="rate">Rating</label>
+                    <select name="rate" id="rate" required="">
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                    </select>
+                  </div>
+
+                  <div class="fieldset">
+                    <label for="add-review">Comments</label>
+                    <textarea
+                      name="add-review"
+                      id="add-review"
+                      cols="20"
+                      rows="5"
+                      required=""
+                    ></textarea>
+                  </div>
+
+                  <div class="fieldset right">
+                    <button type="submit" id="addNewReview" class="button">
+                      Add Review
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <!-- <script sr -->
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.js"
+      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="data/restaurantData.js"></script>
+
+    <script src="js/main.js"></script>
+    <script src="js/restaurant.js"></script>
+    <script src="js/addNewRestaurant.js"></script>
+    <script src="js/helperFns.js"></script>
+    <script src="js/infoHtml.js"></script>
+
+    <script src="js/addReview.js"></script>
+
+    <script
+     src="https://maps.googleapis.com/maps/api/js?key=jsKey&libraries=places&callback=myMap"
+     ></script>
+
+    <footer id="footer" role="contentinfo">
+      Copyright (c) 2020 <a href="/"><strong>Restaurant Reviews</strong></a> All
+      Rights Reserved.
+    </footer>
+  </body>
+</html>
